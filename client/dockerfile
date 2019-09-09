@@ -1,0 +1,8 @@
+FROM node:12.2.0-alpine
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/node/bin/:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+COPY package*.json /app/
+RUN npm install
+COPY . .
+RUN npm run build
+CMD ["npm", "start"]
